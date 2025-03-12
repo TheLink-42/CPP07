@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 #include <Array.hpp>
 
 #define MAX_VAL 750
@@ -13,11 +15,6 @@ int main(int, char**)
         numbers[i] = value;
         mirror[i] = value;
     }
-    //SCOPE
-    {
-        Array<int> tmp = numbers;
-        Array<int> test(tmp);
-    }
 
     for (int i = 0; i < MAX_VAL; i++)
     {
@@ -27,6 +24,19 @@ int main(int, char**)
             return 1;
         }
     }
+    std::cout << "TEST 1 PERFECT!" << std::endl;
+
+    Array<int> tmp = numbers;
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        if (tmp[i] != numbers[i])
+        {
+            std::cerr << "didn't save the same value!!" << std::endl;
+            return 1;
+        }
+    }
+    std::cout << "TEST 2 PERFECT!" << std::endl;
+
     try
     {
         numbers[-2] = 0;
@@ -34,6 +44,7 @@ int main(int, char**)
     catch(const std::exception& e)
     {
         std::cerr << e.what() << '\n';
+        std::cout << "TEST 3 PERFECT!" << std::endl;
     }
     try
     {
@@ -42,12 +53,9 @@ int main(int, char**)
     catch(const std::exception& e)
     {
         std::cerr << e.what() << '\n';
+        std::cout << "TEST 4 PERFECT!" << std::endl;
     }
 
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        numbers[i] = rand();
-    }
-    delete [] mirror;//
+    delete [] mirror;
     return 0;
 }
