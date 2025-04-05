@@ -43,7 +43,7 @@ Implement a function template *iter*.
 
 ## Array (Exercise 02)
 
-Develop a calss templat Array which contains elements of type T with the following implementations.
+Develop a calss template Array which contains elements of type T with the following implementations.
 
 **Rules to follow:**
 * Constructor with no parameters: Creates an empty array.
@@ -54,7 +54,7 @@ Develop a calss templat Array which contains elements of type T with the followi
 * Must never access non-allocated memory.
 * Elements must be accessible using operator [].
 * A member function size() which return the number of elements int the array.
-* Implement a main function with tests on your templated function to ensure everything works as desired.
+* Implement a main function with tests on your templated class to ensure everything works as desired.
 * Handle possible errors with appropriate error messages or exceptions.
 
 
