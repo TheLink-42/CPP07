@@ -30,6 +30,7 @@ class Array
 		Array& operator=(const Array& other);
 
 		T&	operator[](unsigned int i);
+		unsigned int	size() const;
 
 		class	IndexOutOfBoundException : public std::exception
 		{

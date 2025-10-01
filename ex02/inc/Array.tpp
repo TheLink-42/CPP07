@@ -20,9 +20,16 @@ Array<T>::Array(): _array(0), _size(0)
 }
 
 template <typename T>
-Array<T>::Array(unsigned int n): _array(new T[n]), _size(n)
+Array<T>::Array(unsigned int n):  _size(n)
 {
-
+	try {
+		_array = new T[n];
+	}
+	catch (const std::bad_alloc& e) {
+		_array = 0;
+		_size = 0;
+		throw Array<T>::IndexOutOfBoundException();
+	}
 }
 
 
@@ -68,6 +75,12 @@ T&	Array<T>::operator[](unsigned int i)
 	if (i >= _size)
 		throw Array<T>::IndexOutOfBoundException();
 	return _array[i];
+}
+
+template <typename T>
+unsigned int	Array<T>::size() const
+{
+	return _size;
 }
 
 template <typename T>
